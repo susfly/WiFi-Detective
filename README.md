@@ -9,7 +9,10 @@
   
 # License
   MIT
-  
+
+# 软件截图
+![image](https://cloud.githubusercontent.com/assets/5871079/18816241/d3f07e16-8377-11e6-8ea6-1423d1b866b3.png)
+
 # 下载地址
   32位
   
