@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" -->
+
+  <title>WiFi侦探</title>
+  <!--common-->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <link href="css/wifi.css" rel="stylesheet">
+  <!-- Google Analytics -->
+  <!-- <script src="js/analytics.js"></script> -->
+  <script type="text/javascript" src="js/GALocalStorage.js"></script>
+    <script>
+        ga_storage._setAccount('UA-84529861-1'); //Replace with your own
+        ga_storage._trackPageview('/index.html');
+
+    </script>
+<!-- End Google Analytics -->
+</head>
+
+<body class="sticky-header">
+
+<section style="margin-top:-10px">
+    <!-- left side start-->
+    <div class="left-side" style="width: 200px;height: 720px" >
+
+        <!--logo and iconic logo start-->
+          <p  class="logo-head-p">WiFi侦探</p>
+        <!--logo and iconic logo end-->
+
+        <div>
+            <ul class="nav nav-pills nav-stacked left-side-wifi" style="text-align: -webkit-center">
+                <li class=""><p style="margin-top:20px"><img id="signal-res-img" src="images/wifi/wifi-signal-good.png" alt=""><span class="signal-res" id="signal-res-txt"></span></p</li>
+                <li class=""><p id="ssid"><span>N/A</span></p></li>
+                <li class=""><p id="channel"><span>CH.N/A</span></p></li>
+                <li class=""><p ><i class="fa fa-signal"></i> <span id="bssid">N/A</span></p></li>
+            </ul>
+            <!--sidebar nav start-->
+            <ul class="nav nav-pills nav-stacked custom-nav" id="left-side-menu">
+                <li class="active"><a id="left-a-home"><i class="fa fa-home"></i> <span>侦探</span></a></li>
+                <li class=""><a id="left-a-speedtest"><i class="fa fa-eye"></i> <span>推个理</span></a>
+                </li>
+                <li class=""><a id="left-a-diagnose"><i class="fa fa-search"></i> <span>探个案(敬请期待)</span></a>
+                </li>
+                <li class=""><a id="left-a-pktAnalysis"><i class="fa fa-crop"></i> <span>现个形(敬请期待)</span></a>
+                </li>
+            </ul>
+            <!--sidebar nav end-->
+
+        </div>
+    </div>
+    <!-- left side end-->
+
+    <!-- main content start-->
+    <div class="main-content">
+        <!-- header section start-->
+        <div style="left: 200px;width: 880px;height: 60px;margin-top: 10px;border-bottom:1px solid rgba(0,0,0,0.18);-webkit-app-region: drag;">
+
+            <!--welcome section start-->
+            <div style="width:500px; float:left" >
+                <p style="margin-bottom: 0px;font-size: 20px;line-height: 60px;margin-left:20px" id="header_title">
+                  欢迎使用WiFi侦探，为您揭开WiFi神秘面纱
+                </p>
+            </div>
+            <!--welcome section end-->
+
+
+            <!--notification menu start -->
+            <div style="float:right;-webkit-app-region: no-drag;">
+                <ul class="notification-menu">
+                    <li>
+                        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <img src="images/logo.png" alt="" />
+                            更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                            <!-- <li><a href="#myModal2" data-toggle="modal" id="checkUpdateBtn"><i class="fa fa-refresh"></i>  检查更新</a></li> -->
+                            <!-- <li><a href="#"><i class="fa fa-comments"></i>  反馈有奖</a></li> -->
+                            <li><a href="#myModal3" data-toggle="modal" id="aboutBtn"><i class="fa fa-info-circle"></i>  关于</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a id="close-window" href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <img src="images/wifi/close.png" alt="" style="margin-left: 5px;"/>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--notification menu end -->
+
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">检查更新</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <div class="progress progress-striped active progress-sm">
+                                <div style="width: 100%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" role="progressbar" class="progress-bar progress-bar-success">
+                                    <span class="sr-only">45% Complete</span>
+                                </div>
+                            </div>
+                            <p id="p_updateStr">
+                                正在检查最新版本...
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-primary" type="button">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">关于</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <p id="p_versionStr">
+                                版本号：1.0.0
+                            </p>
+                        </div>
+                        <div>
+                            <p id="p_contactStr">
+                                QQ群：487017051
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-primary" type="button">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal -->
+        <!-- header section end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper" style="padding:20px;height:660px;">
+            <div class="row">
+                 <div class="col-sm-8" style="width:600px">
+                    <section class="wifi-main-chart" >
+                        <div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="wifi-signal-chart">
+                                    <div id="signalchart" style="height:280px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <header style="margin-bottom:20px;">
+                            <ul class="nav nav-tabs revenue-short-info">
+                                <li class="active">
+                                    <a href="#wifi-signal-chart" data-toggle="tab" class="wifi-param" id="a_rssi">
+                                        <div class="number" id="rssi">0</div>
+                                        <div class="unit">dbm</div>
+                                        <div class="descript">信号强度</div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#wifi-signal-chart-1" data-toggle="tab" class="wifi-param" id="a_linkrate">
+                                        <div class="number" id="linkrate">0</div>
+                                        <div class="unit">Mbps</div>
+                                        <div class="descript">链路速率</div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#wifi-signal-chart-1" data-toggle="tab" class="wifi-param" id="a_delay">
+                                        <div class="number" id="delay">0</div>
+                                        <div class="unit">ms</div>
+                                        <div class="descript">空口时延</div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#wifi-signal-chart-1" data-toggle="tab" class="wifi-param" id="a_dnSpeed">
+                                        <div class="number" id="dnSpeed">0</div>
+                                        <div class="unit">kbps</div>
+                                        <div class="descript">下行速度</div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#wifi-signal-chart-1" data-toggle="tab" class="wifi-param" id="a_upSpeed">
+                                        <div class="number" id="upSpeed">0</div>
+                                        <div class="unit">kbps</div>
+                                        <div class="descript">上行速度</div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#wifi-signal-chart-1" data-toggle="tab" class="wifi-param" id="a_sameChanCnt">
+                                        <div class="number" id="sameChanCnt">0</div>
+                                        <div class="unit">个</div>
+                                        <div class="descript">同频个数</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </header>
+
+                    </section>
+                    <section class="adapter-info-section" style="border: 1px solid #ccc;height:260px">
+                        <header>
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#home" data-toggle="tab" style="font-size: 18px">我的网卡</a>
+                                </li>
+                            </ul>
+                        </header>
+                        <div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="home">
+                                    <div class="row">
+                                        <div style="height: 200px;width:200px;float:left">
+                                            <div id="loop-chart">
+                                                <div id="adapterchart" style="height:200px;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="net-adapter">
+                                            <div style="padding: 10px 0px 0px 0px;">
+                                                <ul class="p-info" style="">
+                                                    <li>
+                                                        <div class="title">网卡名称：</div>
+                                                        <div class="desk" id="desc">N/A</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="title">MAC地址：</div>
+                                                        <div class="desk" id="mac">N/A</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="title">最高速率：</div>
+                                                        <div class="desk" id="maxRate">N/A</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="title">空间流数：</div>
+                                                        <div class="desk" id="flownum">N/A</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="title">支持频段：</div>
+                                                        <div class="desk" id="band">N/A</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="title">本机IP：</div>
+                                                        <div class="desk" id="ipStr">N/A</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="title">网关IP：</div>
+                                                        <div class="desk" id="ipGwStr">N/A</div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-sm-4">
+                    <section>
+                        <div id="pie-chart" style="margin-bottom:20px;position:relative;border: 1px solid #ccc;">
+                            <div id="eventpiechart" style="height:100px;"></div>
+                            <span class="pie-title">最近一周关键体验</span>
+                        </div>
+                    </section>
+                        <div class="major-record" style="background:url(images/logo.png) no-repeat center 250px;background-size:35%;">
+                            <div class="major-record-head">
+                              <p style="font-size: 18px;">
+                                关键履历
+                              </p>
+                            </div>
+                            <div class="timeline">
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!--body wrapper end-->
+
+        <!-- speed-test start -->
+        <div class="speedTest" style="padding:20px;height:660px;display:none">
+            <div id="speed-test-chart" style="height:400px;width:840px;border:1px solid #ccc"></div>
+            <div style="text-align:center;width:70%;margin: 0 auto;line-height: 40px;">
+                <div id="speedtest-loading" style="display:none;">
+                    <div class="spinner" >
+                        <div class="cube1" ></div>
+                        <div class="cube2" ></div>
+                    </div>
+                    <div class="">
+                        <p id="speed-testing">正在测试...</p>
+                    </div>
+                </div>
+
+            <div class="speedTest-li" style="width:100%">
+                <ul>
+                    <li><p>PING值: <span id="speedtest-ping">0 ms</span></p></li>
+                    <li style="margin-left:80px"><p>下载速度: <span id="speedtest-download">0 Mbps</span></p></li>
+                    <li style="margin-left:80px"><p>上传速度: <span id="speedtest-upload" >0 Mbps</span></p></li>
+                </ul>
+            </div>
+
+        <div id="speed-test-btn-div" style="width:100%;display:table;">
+            <button class="btn btn-success" id="a_speedtest_btn" type="button">点击测速</button>
+        </div>
+
+            </div>
+        </div>
+        <!-- speed-test end -->
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Insert this line above script imports  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="js/jquery/jquery-3.1.0.min.js"></script>
+<script src="js/jquery/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="js/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery/jquery.nicescroll.js"></script>
+<script src="js/index.js" charset="UTF-8"></script>
+
+<!--icheck -->
+<script src="js/iCheck/jquery.icheck.js"></script>
+<script src="js/iCheck/icheck-init.js"></script>
+
+<!--Calendar-->
+<!--script src="js/calendar/clndr.js"></script>
+<script src="js/calendar/evnt.calendar.init.js"></script>
+<script src="js/calendar/moment-2.2.1.js"></script>
+<script src="js/underscore-min.js"></script-->
+
+<!--common scripts for all pages-->
+<script src="js/scripts.js" charset="UTF-8"></script>
+
+<!--baidu eCharts-->
+<script src="js/echarts/echarts.min.js"></script>
+<script src="js/echarts/signalchart.js"> </script>
+<script src="js/echarts/eventpiechart.js"></script>
+<script src="js/echarts/adapterchart.js"></script>
+<script src="js/echarts/speedtestcharts.js"></script>
+<script >
+$("#left-side-menu li a").click(function() {
+    $(this).parent().parent().find("li.active").removeClass("active");
+    $(this).parent().addClass("active");
+})
+$("#left-a-home").click(function() {
+    $(".wrapper").css("display", "block");
+    $(".speedTest").css("display", "none");
+});
+$("#left-a-speedtest").click(function() {
+    $(".wrapper").css("display", "none");
+    $(".speedTest").css("display", "block");
+});
+</script>
+ <!-- Insert this line after script imports -->
+ <script>if (window.module) module = window.module;</script>
+</body>
+</html>
