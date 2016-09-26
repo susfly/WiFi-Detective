@@ -14,9 +14,7 @@
 ![image](https://cloud.githubusercontent.com/assets/5871079/18816241/d3f07e16-8377-11e6-8ea6-1423d1b866b3.png)
 
 # 下载地址
-  32位
-  
-  64位
+  download url [Release](https://github.com/susfly/WiFi-Detective/releases)
 
 # 1.0.0 版本主打产品功能：
 
@@ -33,7 +31,7 @@
 
 # 64位编译 & 打包方法
     npm install
-    npm run-script prepublish-ia32
-    npm run-script package-ia32
+    npm run-script prepublish-x64
+    npm run-script package-x64
     
 
